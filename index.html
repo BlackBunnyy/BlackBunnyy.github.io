@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servo Control</title>
+  <title>WiFi Setup</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      margin: 5px;
+      width: 200px;
+      font-size: 16px;
     }
     button {
       padding: 10px 20px;
@@ -17,19 +23,28 @@
   </style>
 </head>
 <body>
-  <h1>Servo Control</h1>
-  <button onclick="sendCommand('left')">Left</button>
-  <button onclick="sendCommand('right')">Right</button>
+  <h1>WiFi Setup</h1>
+  <form id="wifiForm" onsubmit="connectWiFi(event)">
+    <label for="ssid">SSID:</label><br>
+    <input type="text" id="ssid" name="ssid" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <button type="submit">Connect</button>
+  </form>
 
   <script>
-    function sendCommand(direction) {
+    function connectWiFi(event) {
+      event.preventDefault();
+      var ssid = document.getElementById("ssid").value;
+      var password = document.getElementById("password").value;
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          console.log("Command sent successfully");
+          console.log("Connected to WiFi successfully");
+          window.location.href = "http://[ESP32_IP_ADDRESS]/";
         }
       };
-      xhttp.open("GET", "http://[ESP32_IP_ADDRESS]/control?direction=" + direction, true);
+      xhttp.open("GET", "http://[ESP32_IP_ADDRESS]/connect?ssid=" + ssid + "&password=" + password, true);
       xhttp.send();
     }
   </script>
