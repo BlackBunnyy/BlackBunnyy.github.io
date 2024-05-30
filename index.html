@@ -1,51 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WiFi Setup</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    input[type="text"], input[type="password"] {
-      padding: 10px;
-      margin: 5px;
-      width: 200px;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin: 10px;
-    }
-  </style>
+  <title>ESP32 Control Interface</title>
 </head>
 <body>
-  <h1>WiFi Setup</h1>
-  <form id="wifiForm" onsubmit="connectWiFi(event)">
-    <label for="ssid">SSID:</label><br>
-    <input type="text" id="ssid" name="ssid" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
-    <button type="submit">Connect</button>
-  </form>
+  <h1>ESP32 Control Interface</h1>
+  <button onclick="controlServo1()">Control Servo 1</button>
+  <button onclick="controlServo2()">Control Servo 2</button>
+  <button onclick="controlWaterPump()">Control Water Pump</button>
 
   <script>
-    function connectWiFi(event) {
-      event.preventDefault();
-      var ssid = document.getElementById("ssid").value;
-      var password = document.getElementById("password").value;
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log("Connected to WiFi successfully");
-          window.location.href = "http://https://blackbunnyy.github.io/";
-        }
-      };
-      xhttp.open("GET", "https://blackbunnyy.github.io/connect?ssid=" + ssid + "&password=" + password, true);
-      xhttp.send();
+    function controlServo1() {
+      fetch('/servo1');
+    }
+
+    function controlServo2() {
+      fetch('/servo2');
+    }
+
+    function controlWaterPump() {
+      fetch('/waterpump');
     }
   </script>
 </body>
