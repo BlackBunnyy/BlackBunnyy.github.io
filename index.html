@@ -41,7 +41,7 @@
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           console.log("Connected to WiFi successfully");
-          window.location.href = "http://[ESP32_IP_ADDRESS]/";
+          window.location.href = "http://https://blackbunnyy.github.io/";
         }
       };
       xhttp.open("GET", "https://blackbunnyy.github.io/connect?ssid=" + ssid + "&password=" + password, true);
