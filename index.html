@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Control Interface</title>
+  <script>
+    async function controlDevice(endpoint) {
+      const esp32IP = '192.168.66.35'; // Replace with your ESP32's IP address
+      const url = `http://${esp32IP}/${endpoint}`;
+      try {
+        const response = await fetch(url);
+        const text = await response.text();
+        console.log(text);
+        alert(text);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to control device');
+      }
+    }
+  </script>
 </head>
 <body>
   <h1>ESP32 Control Interface</h1>
-  <button onclick="controlServo1()">Control Servo 1</button>
-  <button onclick="controlServo2()">Control Servo 2</button>
-  <button onclick="controlWaterPump()">Control Water Pump</button>
-
-  <script>
-    function controlServo1() {
-      fetch('/servo1');
-    }
-
-    function controlServo2() {
-      fetch('/servo2');
-    }
-
-    function controlWaterPump() {
-      fetch('/waterpump');
-    }
-  </script>
+  <button onclick="controlDevice('servo1')">Control Servo 1</button>
+  <button onclick="controlDevice('servo2')">Control Servo 2</button>
+  <button onclick="controlDevice('waterpump')">Control Water Pump</button>
 </body>
 </html>
