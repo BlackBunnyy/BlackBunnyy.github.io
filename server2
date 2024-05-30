@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servo Control</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Servo Control</h1>
+  <button onclick="sendCommand('left')">Left</button>
+  <button onclick="sendCommand('right')">Right</button>
+
+  <script>
+    function sendCommand(direction) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log("Command sent successfully");
+        }
+      };
+      xhttp.open("GET", "http://[ESP32_IP_ADDRESS]/control?direction=" + direction, true);
+      xhttp.send();
+    }
+  </script>
+</body>
+</html>
