@@ -31,7 +31,7 @@
   </style>
   <script>
     async function controlDevice(endpoint) {
-      const esp32IP = '192.168.75.140'; // Replace with your ESP32's IP address
+      const esp32IP = '192.168.151.140'; // Replace with your ESP32's IP address
       const url = `http://${esp32IP}/${endpoint}`;
       const button = document.querySelector(`button[onclick="controlDevice('${endpoint}')"]`);
       button.disabled = true;
