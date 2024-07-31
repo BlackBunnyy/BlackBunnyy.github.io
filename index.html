@@ -1,61 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Device Control Interface</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:disabled {
-      cursor: not-allowed;
-      background-color: #ccc;
-    }
-  </style>
-  <script>
-    async function controlDevice(endpoint) {
-      const esp32IP = 'http://192.168.151.140'; // Replace with your ESP32's IP address
-      const url = `${esp32IP}/${endpoint}`;
-      const button = document.querySelector(`button[onclick="controlDevice('${endpoint}')"]`);
-      button.disabled = true;
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const text = await response.text();
-        console.log(text);
-        alert(text);
-      } catch (error) {
-        console.error('Error:', error);
-        alert(`Failed to control device: ${error.message}`);
-      } finally {
-        button.disabled = false;
-      }
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary 4 Years</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Device Control Interface</h1>
-  <button onclick="controlDevice('servo1')">Control Servo 1</button>
-  <button onclick="controlDevice('servo2')">Control Servo 2</button>
-  <button onclick="controlDevice('waterpump')">Control Water Pump</button>
+    <header>
+        <h1>4th Anniversary</h1>
+    </header>
+    <div class="container">
+        <div class="gallery">
+            <div class="image" id="img1">
+                <img src="วันเกิด1.jpg" alt="Memory 1">
+                <div class="caption">วันเกิดครั้งแรกของที่รักหลังจากคบกัน 1</div>
+            </div>
+            <div class="image" id="img2">
+                <img src="คู่1.jpg" alt="Memory 2">
+                <div class="caption">เราถ่ายรูปคู่ด้วยกันครั้งแรก(รึเปล่านะ555)</div>
+            </div>
+            <!-- ใส่รูปเพิ่มตามนี้ (รวมทั้งหมด 10 รูป) -->
+        </div>
+    </div>
+    <footer>
+        <p>ด้วยความรัก, [อินทนนท์ อินทรศรี]</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
