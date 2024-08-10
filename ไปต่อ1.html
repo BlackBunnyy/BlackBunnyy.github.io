@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รูปคู่ครั้งแรกของพวกเรา</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Sriracha', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .slideshow {
+            width: 500px;  /* เพิ่มขนาดความกว้าง */
+            height: 500px; /* เพิ่มขนาดความสูง */
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: slideShow 12s infinite;
+        }
+        .slideshow img:nth-child(1) { animation-delay: 0s; }
+        .slideshow img:nth-child(2) { animation-delay: 3s; }
+        .slideshow img:nth-child(3) { animation-delay: 6s; }
+        .slideshow img:nth-child(4) { animation-delay: 9s; }
+
+        @keyframes slideShow {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            50% { opacity: 1; }
+            70% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slideshow">
+            <img src="คู่1.jpg" alt="Image 1">
+            <img src="คู่2.jpg" alt="Image 2">
+            <img src="คู่3.jpg" alt="Image 3">
+            <img src="คู่4.jpg" alt="Image 4">
+        </div>
+        <p>รูปคู่ครั้งแรกของพวกเรา</p>
+        <p>เหมือนจะจำได้ว่าตอนนั้นจู่ๆก็โดนลากไปถ่ายยังงงๆอยู่เลย555</p>
+        <a href="ไปต่อ2.html" class="button">ความทรงจำถัดไป</a>
+    </div>
+</body>
+</html>
